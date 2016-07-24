@@ -1,10 +1,19 @@
 Detector/main.o Detector/main.o: ../Detector/main.cpp \
- /home/cmk/workspace_c/JWalkingPrevetionProject/Detector/main.h \
- /home/cmk/workspace_c/JWalkingPrevetionProject/Detector/confirmDevice.h \
- /usr/local/include/libusb-1.0/libusb.h
+ ../Detector/network/Server/RaspbSocket.h \
+ ../Detector/network/Server/AsyncSock.h \
+ ../Detector/network/Server/SocketWrap.h \
+ ../Detector/device/ConfirmDevice.h \
+ /usr/local/include/libusb-1.0/libusb.h \
+ ../Detector/device/ConnectDevice.h
 
-/home/cmk/workspace_c/JWalkingPrevetionProject/Detector/main.h:
+../Detector/network/Server/RaspbSocket.h:
 
-/home/cmk/workspace_c/JWalkingPrevetionProject/Detector/confirmDevice.h:
+../Detector/network/Server/AsyncSock.h:
+
+../Detector/network/Server/SocketWrap.h:
+
+../Detector/device/ConfirmDevice.h:
 
 /usr/local/include/libusb-1.0/libusb.h:
+
+../Detector/device/ConnectDevice.h:

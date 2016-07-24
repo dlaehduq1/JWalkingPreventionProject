@@ -6,8 +6,9 @@
  */
 
 #include <main.h>
-#include <confirmDevice.h>
-#include <connectDevice.h>
+#include "network/Server/RaspbSocket.h"
+#include "device/ConfirmDevice.h"
+#include "device/ConnectDevice.h"
 #include <detectracker.h>
 
 int main(int argc, char** argv){
@@ -16,7 +17,7 @@ int main(int argc, char** argv){
 
 	printf("\n주변장치와 연결여부를 확인합니다...");
 
-	while(1){
+	while(0){
 
 		int conn_state=0;
 		char   ch_key=0;
@@ -28,29 +29,30 @@ int main(int argc, char** argv){
 						"(\n프로그램 종료를 원하면 n을 입력하세요.");
 
 			}
-			else if(conn_state == CON_CAM | CON_LED){
+			else if(conn_state == ( CON_CAM | CON_LED) ){
 				fprintf(stderr,"\n스피커가 연결되지 않았습니다.");
 
 			}
-			else if(conn_state == CON_CAM | CON_SPK){
+			else if(conn_state == (CON_CAM|CON_SPK)){
 				fprintf(stderr,"\nLED가 연결되지 않았습니다.");
 
 			}
 
-			while(1){
 
-				ch_key   = getchar();
-				­
-				if (ch_key == 'y'){
+			while(1){
+				ch_key = getchar();
+
+				if(ch_key == 'y'){
 					break;
 				}
-				else if(ch_key == 'n')
+
+				else if(ch_key == 'n'){
 					printf("프로그램을 종료합니다.");
 					return 0;
 				}
-				else{
+				else
 					fprintf(stderr,"\n y나 n만 입력바랍니다.");
-				}
+
 			}
 
 			for(int i=0 ; i < 5 ; i++){
@@ -67,8 +69,13 @@ int main(int argc, char** argv){
 
 	/////주변 라즈베리 탐색
 
+	RaspbSocket rsock(10);
+	rsock.InitServer();
+	rsock.CreateThread();
 
+	while(1){
 
+	}
 
 
 
