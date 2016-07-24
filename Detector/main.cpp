@@ -6,7 +6,6 @@
  */
 
 #include <main.h>
-#include "network/Server/RaspbSocket.h"
 #include "device/ConfirmDevice.h"
 #include "device/ConnectDevice.h"
 #include <detectracker.h>
@@ -68,10 +67,6 @@ int main(int argc, char** argv){
 	}
 
 	/////주변 라즈베리 탐색
-
-	RaspbSocket rsock(10);
-	rsock.InitServer();
-	rsock.CreateThread();
 
 	while(1){
 
