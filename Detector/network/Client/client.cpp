@@ -1,24 +1,24 @@
 #include "client.h"
 
-#define PORT 3456    /* the port client will be connecting to */
-
+#define PORT 3490    /* the port client will be connecting to */
 #define MAXDATASIZE 100 /* max number of bytes we can get at once */
 
-int client() {
+void *client()
+    {
         int sockfd, numbytes;
         char buf[MAXDATASIZE];
         struct hostent *he;
         struct sockaddr_in their_addr; /* connector's address information */
 
-     /*   if (argc != 2) {
+   /*     if (argc != 2) {
             fprintf(stderr,"usage: client hostname\n");
             exit(1);
         }*/
-
-        if ((he=gethostbyname("127.0.0.1")) == NULL) {  /* get the host info */
+        he=gethostbyname("localhost");
+/*        if (( == NULL)) {   get the host info
             herror("gethostbyname");
             exit(1);
-        }
+        }*/
 
         if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
             perror("socket");
@@ -35,12 +35,25 @@ int client() {
             perror("connect");
             exit(1);
         }
-        /* sleep(5); */
-	while (1){
-		if (send(sockfd, "Hello, world!\n", 14, 0) == -1)
-		      perror("send");
-		printf("In loop \n");
+	while (1) {
+		if (send(sockfd, "Hello, world!\n", 14, 0) == -1){
+                      perror("send");
+		      exit (1);
+		}
+		printf("After the send function \n");
+
+        	if ((numbytes=recv(sockfd, buf, MAXDATASIZE, 0)) == -1) {
+            		perror("recv");
+            		exit(1);
+		}
+
+	        buf[numbytes] = '\0';
+
+        	printf("Received in pid=%d, text=: %s \n",getpid(), buf);
+		sleep(1);
+
 	}
+
         close(sockfd);
 
         return 0;

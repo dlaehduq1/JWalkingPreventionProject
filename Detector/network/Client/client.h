@@ -20,7 +20,6 @@
 
 
 
-
 #endif /* DETECTOR_NETWORK_CLIENT_CLIENT_H_ */
 
-int client();
+void *client();

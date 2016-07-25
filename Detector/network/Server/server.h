@@ -16,11 +16,12 @@
 #include <netinet/in.h>
 #include <sys/socket.h>
 #include <sys/wait.h>
+#include <sys/time.h>
+#include <unistd.h>
 #include <arpa/inet.h>
-#include <fcntl.h> /* Added for the nonblocking socket */
 
 
 
 #endif /* DETECTOR_NETWORK_SERVER_SERVER_H_ */
 
-int server();
+void *server(void *);
