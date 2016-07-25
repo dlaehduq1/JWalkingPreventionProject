@@ -25,5 +25,6 @@ C_DEPS :=
 SUBDIRS := \
 Detector \
 Detector/device \
+Detector/network/Client \
 Detector/network/Server \
 

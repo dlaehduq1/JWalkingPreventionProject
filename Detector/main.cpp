@@ -5,10 +5,8 @@
  *      Author: cmk
  */
 
-#include <main.h>
-#include "device/ConfirmDevice.h"
-#include "device/ConnectDevice.h"
-#include <detectracker.h>
+#include "main.h"
+
 
 int main(int argc, char** argv){
 
@@ -55,7 +53,7 @@ int main(int argc, char** argv){
 			}
 
 			for(int i=0 ; i < 5 ; i++){
-				sleep(1000);
+				//sleep(1000);
 				printf("\n재 연결 시도중입니다..............\n");
 			}
 
@@ -67,6 +65,10 @@ int main(int argc, char** argv){
 	}
 
 	/////주변 라즈베리 탐색
+
+	server();
+	client();
+
 
 	while(1){
 

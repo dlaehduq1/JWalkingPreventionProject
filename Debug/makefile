@@ -9,6 +9,7 @@ RM := rm -rf
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include Detector/network/Server/subdir.mk
+-include Detector/network/Client/subdir.mk
 -include Detector/device/subdir.mk
 -include Detector/subdir.mk
 -include subdir.mk
